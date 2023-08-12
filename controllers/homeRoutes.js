@@ -3,6 +3,14 @@ const router = require("express").Router();
 const { Project, User } = require("../models");
 const withAuth = require("../utils/auth");
 
+//below is based on dish-routes.js in activity #2 in MVC
+//// This method is rendering the 'main' Handlebars.js template.
+//This is how we connect each route to the correct template.
+router.get("/", async (req, res) => {
+  //in here is where we add something like Book.findAll()--from MVC activity #2
+  res.render("main");
+});
+
 router.get("/", async (req, res) => {
   try {
     // Get all projects and JOIN with user data

@@ -1,5 +1,6 @@
 //from MVC mini project
 
+//dependencies:
 const path = require("path");
 const express = require("express");
 const session = require("express-session");
