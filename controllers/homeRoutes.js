@@ -12,30 +12,37 @@ const withAuth = require("../utils/auth");
 //   res.render("main");
 // });
 
-router.get("/", async (req, res) => {
-  try {
-    // Get all blogs and JOIN with user data
-    const blogData = await Blog.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ["username"],
-        },
-      ],
-    });
-
-    // Serialize data so the template can read it
-    const blogs = blogData.map((blog) => blog.get({ plain: true }));
-
-    // Pass serialized data and session flag into template
-    res.render("homepage", {
-      blogs,
-      logged_in: req.session.logged_in,
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+router.get("/", (req, res) => {
+  res.render("homepage");
 });
+
+//I had to put code above to get homepage to work
+//how to make code below work?
+
+// router.get("/", async (req, res) => {
+//   try {
+//     // Get all blogs and JOIN with user data
+//     const blogData = await Blog.findAll({
+//       include: [
+//         {
+//           model: User,
+//           attributes: ["username"],
+//         },
+//       ],
+//     });
+
+//     // Serialize data so the template can read it
+//     const blogs = blogData.map((blog) => blog.get({ plain: true }));
+
+//     // Pass serialized data and session flag into template
+//     res.render("homepage", {
+//       blogs,
+//       logged_in: req.session.logged_in,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 router.get("/blogs/:id", async (req, res) => {
   try {
@@ -89,8 +96,8 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-// router.get("/signup", (req, res) => {
-//   res.render("signup");
-// });
+router.get("/signup", (req, res) => {
+  res.render("signup");
+});
 
 module.exports = router;

@@ -5,5 +5,8 @@ const blogRoutes = require("./blogRoutes");
 
 router.use("/users", userRoutes);
 router.use("/blogs", blogRoutes);
+// router.use("/", (req, res) => {
+//   res.send("homepage");
+// });
 
 module.exports = router;
