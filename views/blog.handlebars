@@ -1,14 +1,24 @@
-<div class="blog-card">
+{{!-- <div class="blog-card">
     <div class="blog-card-header">
         {{title}}
     </div>
     <div class="card-body">
         <p>Content: {{content}}</p>
     </div>
-</div>
+</div> --}}
 
 {{!-- "title": "Tech Blog Entry 1",
 "content": "Information on..." --}}
 {{!-- see MVC activity #3 --}}
 {{!-- for an array of blogs, see recording on
 8-8-23 at 1:11 mark --}}
+
+<div class="text-center">
+    <h2>{{title}}</h2>
+    <p>{{content}}</p>
+    <p>Posted by {{user.name}} on {{format_date date_created}}</p>
+    {{!-- need to add comment stuff here --}}
+    <p>
+        <button class="btn btn-primary">Submit</button>
+    </p>
+</div>

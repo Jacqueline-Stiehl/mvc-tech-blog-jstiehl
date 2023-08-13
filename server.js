@@ -17,6 +17,8 @@ const PORT = process.env.PORT || 3001;
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
 
+//activity #17 has different information than below
+//see activity #18 for explanations on below:
 const sess = {
   secret: "Super secret secret",
   cookie: {
