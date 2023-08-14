@@ -15,11 +15,11 @@
 
 <div id="{{id}}" class="blog-id text-center">
     <h2>{{title}}</h2>
-    <p>{{content}}</p>
-    <p>Posted by {{user.name}} on {{format_date date_created}}</p>
+    <p class="posted-comment">Comment: {{content}}</p>
+    <p class="posted-comment">Posted by {{user.username}} on {{format_date date_created}}</p>
     {{!-- need to add comment stuff here --}}
     <div class="form-group">
-        <label for="blog-comment">Content:</label>
+        <label for="blog-comment">Add a comment:</label>
         <textarea class="form-input" id="blog-comment" name="blog-comment"></textarea>
       </div>
     <p>
