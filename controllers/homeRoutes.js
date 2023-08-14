@@ -1,7 +1,7 @@
 //look in MVC activity #8 for example on get with serialization
 //based off of MVC mini project:
 const router = require("express").Router();
-const { Blog, User } = require("../models");
+const { Blog, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
 //below is based on dish-routes.js in activity #2 in MVC
@@ -12,41 +12,17 @@ const withAuth = require("../utils/auth");
 //   res.render("main");
 // });
 
-router.get("/", (req, res) => {
-  res.render("homepage");
-});
+// router.get("/", (req, res) => {
+//   res.render("homepage");
+// });
 
 //I had to put code above to get homepage to work
 //how to make code below work?
 
-// router.get("/", async (req, res) => {
-//   try {
-//     // Get all blogs and JOIN with user data
-//     const blogData = await Blog.findAll({
-//       include: [
-//         {
-//           model: User,
-//           attributes: ["username"],
-//         },
-//       ],
-//     });
-
-//     // Serialize data so the template can read it
-//     const blogs = blogData.map((blog) => blog.get({ plain: true }));
-
-//     // Pass serialized data and session flag into template
-//     res.render("homepage", {
-//       blogs,
-//       logged_in: req.session.logged_in,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-router.get("/blogs/:id", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const blogData = await Blog.findByPk(req.params.id, {
+    // Get all blogs and JOIN with user data
+    const blogData = await Blog.findAll({
       include: [
         {
           model: User,
@@ -55,13 +31,41 @@ router.get("/blogs/:id", async (req, res) => {
       ],
     });
 
-    const blog = blogData.get({ plain: true });
+    // Serialize data so the template can read it
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
+    // Pass serialized data and session flag into template
+    res.render("homepage", {
+      blogs,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/blog/:id", async (req, res) => {
+  try {
+    const blogData = await Blog.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+        {
+          model: Comment,
+        },
+      ],
+    });
+
+    const blog = blogData.get({ plain: true });
+    console.log(blog);
     res.render("blog", {
       ...blog,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
