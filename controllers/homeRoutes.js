@@ -1,5 +1,5 @@
 //look in MVC activity #8 for example on get with serialization
-//from MVC mini project:
+//based off of MVC mini project:
 const router = require("express").Router();
 const { Blog, User } = require("../models");
 const withAuth = require("../utils/auth");

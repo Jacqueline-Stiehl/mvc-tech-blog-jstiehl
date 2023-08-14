@@ -1,4 +1,4 @@
-//from MVC mini project:
+//based off of MVC mini project:
 const newFormHandler = async (event) => {
   event.preventDefault();
 

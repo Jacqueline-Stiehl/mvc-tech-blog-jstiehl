@@ -1,4 +1,4 @@
-//from MVC mini project
+//based off of MVC mini project
 
 const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");

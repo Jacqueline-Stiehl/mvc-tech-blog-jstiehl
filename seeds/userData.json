@@ -1,17 +1,14 @@
 [
     {
-      "name": "Me",
-      "email": "me@hotmail.com",
+      "username": "Me",
       "password": "password1"
     },
     {
-      "name": "You",
-      "email": "you@gmail.com",
+      "username": "You",
       "password": "password2"
     },
     {
-      "name": "Everyone",
-      "email": "everyone@gmail.com",
+      "username": "Everyone",
       "password": "password3"
     }
   ]

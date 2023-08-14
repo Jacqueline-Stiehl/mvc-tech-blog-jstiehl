@@ -1,6 +1,6 @@
-//from MVC mini project:
+//based off of MVC mini project:
 //I updated on 8-11-23
-const User = require("./User");
+const User = require("./user");
 const Blog = require("./Blog");
 
 User.hasMany(Blog, {
