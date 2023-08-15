@@ -45,7 +45,7 @@ h4 {
 }
 
 .nav,
-.no-button {
+.logout-button {
   font-family: "Orbitron", sans-serif;
   color: rgb(19, 131, 141);
   font-size: 30px;
@@ -60,7 +60,9 @@ nav a {
 
 .form-group,
 .posted-comment,
-.posted-blogs {
+.posted-blogs,
+.user-comments,
+.update-blog {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: white;
   font-size: 20px;
@@ -73,6 +75,20 @@ nav a {
   color: black;
   margin: 20px;
 }
+
+.blog-content {
+  display: flex;
+  align-items: center;
+  width: 600px;
+}
+
+#blog-title {
+  width: 400px;
+}
+
+/* .btn-delete {
+  padding-top: 20px;
+} */
 
 .signuplink,
 .loginlink {
@@ -98,7 +114,7 @@ textarea {
   margin: 10px;
 }
 
-.card {
+/* .card {
   font-family: "Gill Sans", sans-serif;
   color: white;
   font-size: 20px;
@@ -110,4 +126,4 @@ textarea {
   height: 100%;
   min-height: 800px;
   padding: 5px;
-}
+} */

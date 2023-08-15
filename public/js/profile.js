@@ -37,6 +37,41 @@ const delButtonHandler = async (event) => {
     }
   }
 };
+//////////////////////////////////////////////////////
+//based off of MVC activity #10:
+//I moved this to comment.js
+// const updateCommentHandler = async (event) => {
+//   event.preventDefault();
+
+//   const blog_id = document.querySelector(".blog-id").getAttribute("id");
+//   const content = document.querySelector("#blog-comment").value.trim();
+
+// window.location gives us access to the URL.
+//We then use the .split() method to access the number at the
+//end of the URL and set that equal to id.
+
+//   const response = await fetch(`/api/profile/${id}`, {
+//     method: "PUT",
+//     body: JSON.stringify({
+//       title,
+//       content,
+//     }),
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+//   if (response.ok) {
+//     document.location.replace(`/profile/${id}`);
+//   } else {
+//     alert("Unable to edit the blog entry.");
+//   }
+// };
+
+// document
+//   .querySelector("#update-comment")
+//   .addEventListener("submit", updateCommentHandler);
+
+/////////////////////////////////////////////////////////
 
 document
   .querySelector(".new-blog-form")

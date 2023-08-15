@@ -13,35 +13,42 @@ const newCommentHandler = async (event) => {
         "Content-Type": "application/json",
       },
     });
-
-    // if (response.ok) {
-    //   document.location.replace("/profile");
-    // } else {
-    //   alert("Failed to create blog entry");
-    // }
   }
 };
 
-// const delButtonHandler = async (event) => {
-//   if (event.target.hasAttribute("data-id")) {
-//     const id = event.target.getAttribute("data-id");
+//I moved below from profile.js:
+const updateBlogEntryHandler = async (event) => {
+  event.preventDefault();
 
-//     const response = await fetch(`/api/blogs/${id}`, {
-//       method: "DELETE",
-//     });
+  const blog_id = document.querySelector(".blog-id").getAttribute("id");
+  const content = document.querySelector("#update-blog-content").value.trim();
+  const title = document.querySelector("#update-blog-title").value.trim();
 
-//     if (response.ok) {
-//       document.location.replace("/profile");
-//     } else {
-//       alert("Failed to delete blog entry");
-//     }
-//   }
-// };
+  // window.location gives us access to the URL.
+  //We then use the .split() method to access the number at the
+  //end of the URL and set that equal to id.
+
+  const response = await fetch(`/api/blog/${blog_id}`, {
+    method: "PUT",
+    body: JSON.stringify({
+      title,
+      content,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (response.ok) {
+    document.location.replace(`/blog/${id}`);
+  } else {
+    alert("Unable to edit the blog entry.");
+  }
+};
+
+document
+  .querySelector("#update-blog")
+  .addEventListener("submit", updateBlogEntryHandler);
 
 document
   .querySelector("#new-comment")
   .addEventListener("click", newCommentHandler);
-
-//   document
-//     .querySelector(".blog-list")
-//     .addEventListener("click", delButtonHandler);
