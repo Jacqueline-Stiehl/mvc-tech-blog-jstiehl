@@ -22,6 +22,56 @@ const newFormHandler = async (event) => {
   }
 };
 
+const updateBlogEntryHandler = async (event) => {
+  event.preventDefault();
+  console.log("hello");
+
+  //const content = document.querySelector("#blog-content").value.trim();
+  //const title = document.querySelector("#blog-title").value.trim();
+
+  return console.log("title");
+};
+
+//I moved below from comment.js:
+const handleUpdateForm = async (event) => {
+  const blog_id = event.target.getAttribute("data-id");
+
+  const content = document
+    .querySelector(`#blog-content-${blog_id}`)
+    .value.trim();
+  const title = document.querySelector(`#blog-title-${blog_id}`).value.trim();
+
+  console.log(`
+  ${title}
+  ${content}
+  `);
+
+  //   window.location gives us access to the URL.
+  //   We then use the .split() method to access the number at the
+  //   end of the URL and set that equal to id.
+
+  // const id = window.location.toString().split("/")[
+  //   window.location.toString().split("/").length - 1
+  // ];
+
+  const response = await fetch(`/api/blogs/${blog_id}`, {
+    method: "PUT",
+    body: JSON.stringify({
+      title,
+      content,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  if (response.ok) {
+    alert("Update successful!!");
+  } else {
+    alert("Unable to edit the blog entry.");
+  }
+};
+
+//this one was working:
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute("data-id")) {
     const id = event.target.getAttribute("data-id");
@@ -37,6 +87,27 @@ const delButtonHandler = async (event) => {
     }
   }
 };
+
+const formsDiv = document.querySelector(".blog-list");
+formsDiv.addEventListener("submit", function (event) {
+  event.preventDefault();
+  if (event.target.matches("form")) {
+    handleUpdateForm(event);
+  }
+});
+
+// document
+//   .querySelector(".update-blog123")
+//   .addEventListener("submit", updateBlogEntryHandler);
+
+// document
+//   .querySelector(".new-blog-form")
+//   .addEventListener("submit", newFormHandler);
+
+document
+  .querySelector(".blog-list")
+  .addEventListener("click", delButtonHandler);
+
 //////////////////////////////////////////////////////
 //based off of MVC activity #10:
 //I moved this to comment.js
@@ -72,11 +143,3 @@ const delButtonHandler = async (event) => {
 //   .addEventListener("submit", updateCommentHandler);
 
 /////////////////////////////////////////////////////////
-
-document
-  .querySelector(".new-blog-form")
-  .addEventListener("submit", newFormHandler);
-
-document
-  .querySelector(".blog-list")
-  .addEventListener("click", delButtonHandler);

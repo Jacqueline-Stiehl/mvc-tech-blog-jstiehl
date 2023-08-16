@@ -8,18 +8,26 @@
 
 <div class="row mt-4">
   <div class="col-md-6">
-    <h3>Create a Blog Entry:</h3>
+    <h3>Create a Blog Entry Hello:</h3>
     <form class="form new-blog-form">
       <div class="form-group">
         <label for="blog-title">Blog entry title:</label>
-        <input class="form-input" type="text" id="blog-title" name="blog-title" />
+        <br/>
+        <textarea class="form-input" id="blog-title" name="blog-title">
+          {{title}}
+        </textarea>
+        <br/>
+        {{!-- <input class="form-input" type="text" id="blog-title" name="blog-title" /> --}}
       </div>
       <div class="form-group blog-content">
         <label for="blog-content">Content:</label>
-        <textarea class="form-input blog-content" id="blog-content" name="blog-content"></textarea>
+        <textarea class="form-input blog-content" id="blog-content" name="blog-content">
+          {{content}}
+        </textarea>
+        <br/>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create New Blog Entry</button>
+        <button type="submit" class="btn btn-primary" value="Submit">Create New Blog Entry</button>
       </div>
     </form>
   </div>
@@ -32,11 +40,41 @@
     <div class="row mb-2">
       <div class="col-md-8">
         <h4><a href="/blog/{{blog.id}}"style="color: rgb(19, 131, 141)">{{blog.title}}</a>
+        <p>{{blog.content}}</p>
+        <p>Posted by {{blog.user.username}} on {{format_date blog.date_created}}</p>
       </div>
+      {{!-- why won't username appear on screen?!?!?! --}}
+
+<div id="{{id}}" class="blog-id text-center">
+    <h2>
+        Update Blog Entry Titled {{title}}
+    </h2>
+        <form data-id="{{id}}">
+   
+            <div class="form-group update-blog-title">
+                <label for="blog-title">Updated blog entry title:</label>
+                <br/>
+                <textarea class="form-input" type="text" id="blog-title-{{id}}" name="update-blog-title">
+                    {{title}}
+                </textarea>
+                <br/>
+            </div>
+            <div class="form-group blog-content">
+                <label for="blog-content">Updated blog content:</label>
+                <br/>
+                <textarea class="form-input" id="blog-content-{{id}}" name="blog-content">
+                    {{content}}
+                </textarea>
+                <br/>
+            </div>
+             <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit Updated Blog Entry NOW</button>
+            </div>
+        </form>
+
       <div class="col-md-4">
         <button class="btn btn-sm btn-delete" data-id="{{blog.id}}">DELETE {{blog.title}}</button>
       </div>
-      {{!-- Try moving the code above to the blog.handlebars file --}}
     </div>
     {{/each}}
   {{/if}}

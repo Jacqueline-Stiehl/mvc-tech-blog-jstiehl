@@ -16,44 +16,6 @@ const newCommentHandler = async (event) => {
   }
 };
 
-//I moved below from profile.js:
-const updateBlogEntryHandler = async (event) => {
-  event.preventDefault();
-
-  const blog_id = document.querySelector(".blog-id").getAttribute("id");
-  const content = document.querySelector("#update-blog-content").value.trim();
-  const title = document.querySelector("#update-blog-title").value.trim();
-
-  //   window.location gives us access to the URL.
-  //   We then use the .split() method to access the number at the
-  //   end of the URL and set that equal to id.
-
-  const id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
-  ];
-
-  const response = await fetch(`/api/blog/${blog_id}`, {
-    method: "PUT",
-    body: JSON.stringify({
-      blog_id,
-      title,
-      content,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  if (response.ok) {
-    document.location.replace(`/blog/${id}`);
-  } else {
-    alert("Unable to edit the blog entry.");
-  }
-};
-
-document
-  .querySelector("#update-blog")
-  .addEventListener("submit", updateBlogEntryHandler);
-
 document
   .querySelector("#new-comment")
   .addEventListener("click", newCommentHandler);
