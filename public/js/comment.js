@@ -1,4 +1,5 @@
 //based off of MVC mini project:
+//added to profile.js
 const newCommentHandler = async (event) => {
   event.preventDefault();
 

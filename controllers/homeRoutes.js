@@ -4,21 +4,6 @@ const router = require("express").Router();
 const { Blog, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
-//below is based on dish-routes.js in activity #2 in MVC
-//// This method is rendering the 'main' Handlebars.js template.
-//This is how we connect each route to the correct template.
-// router.get("/", async (req, res) => {
-//   //in here is where we add something like Book.findAll()--from MVC activity #2
-//   res.render("main");
-// });
-
-// router.get("/", (req, res) => {
-//   res.render("homepage");
-// });
-
-//I had to put code above to get homepage to work
-//how to make code below work?
-
 router.get("/", async (req, res) => {
   try {
     // Get all blogs and JOIN with user data

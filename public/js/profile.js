@@ -65,9 +65,33 @@ const handleUpdateForm = async (event) => {
     },
   });
   if (response.ok) {
-    alert("Update successful!!");
+    //alert("Update successful!!");
+    document.location.replace("/profile");
   } else {
     alert("Unable to edit the blog entry.");
+  }
+};
+
+//add a comment
+const newCommentHandler = async (event) => {
+  event.preventDefault();
+
+  const blog_id = document.querySelector(".blog-id").getAttribute("id");
+  const content = document.querySelector(".new-comment").value.trim();
+
+  if (blog_id && content) {
+    const response = await fetch(`/api/blogs/${blog_id}`, {
+      method: "POST",
+      body: JSON.stringify({ blog_id, content }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      document.location.replace("/profile");
+    } else {
+      alert("Failed to add comment.");
+    }
   }
 };
 
@@ -100,13 +124,17 @@ formsDiv.addEventListener("submit", function (event) {
 //   .querySelector(".update-blog123")
 //   .addEventListener("submit", updateBlogEntryHandler);
 
-// document
-//   .querySelector(".new-blog-form")
-//   .addEventListener("submit", newFormHandler);
+document
+  .querySelector(".new-blog-form")
+  .addEventListener("submit", newFormHandler);
 
 document
   .querySelector(".blog-list")
   .addEventListener("click", delButtonHandler);
+
+document
+  .querySelector(".new-comment")
+  .addEventListener("submit", newCommentHandler);
 
 //////////////////////////////////////////////////////
 //based off of MVC activity #10:
