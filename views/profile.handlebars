@@ -33,7 +33,7 @@
   </div>
 
 {{#if blogs.length}}
-<div class="col-md-6 blog-list">
+<form class="col-md-6 blog-list">
     <h3>Blog Entries:</h3>
 
     {{#each blogs as |blog|}}
@@ -41,7 +41,7 @@
       <div class="col-md-8">
         <h4><a href="/blog/{{blog.id}}"style="color: rgb(19, 131, 141)">{{blog.title}}</a>
         <p>{{blog.content}}</p>
-        <p>Posted by {{blog.user.username}} on {{format_date blog.date_created}}</p>
+        <p>Posted on {{format_date blog.date_created}}</p>
       </div>
       {{!-- why won't username appear on screen?!?!?! --}}
 
@@ -49,7 +49,7 @@
     <h4>
         Update Blog Entry Titled {{title}}
     </h4>
-        <form data-id="{{id}}">
+        <form>
    
             <div class="form-group update-blog-title">
                 <label for="blog-title">Updated blog entry title:</label>
@@ -77,8 +77,9 @@
       </div>
     </div>
     {{/each}}
+    <script src="./js/update.js"></script>
   {{/if}}
 </div>
-</div>
+</form>
 
 <script src="./js/profile.js"></script>
