@@ -49,6 +49,6 @@ https://jacqueline-stiehl.github.io/mvc-tech-blog-jstiehl/
 
 ## Heroku
 
-Heroku app name: note-taker-jstiehl:
+Heroku app name: mvc-techblog-jstiehl:
 
-https://watch.screencastify.com/v/JagzrlsAW8cYQZ1BSETk
+https://mvc-techblog-jstiehl-e87070ff2360.herokuapp.com/
