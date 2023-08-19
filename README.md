@@ -45,6 +45,8 @@ https://github.com/Jacqueline-Stiehl/mvc-tech-blog-jstiehl
 
 ## URL of deployed application
 
+https://jacqueline-stiehl.github.io/mvc-tech-blog-jstiehl/
+
 ## Heroku
 
 Heroku app name: note-taker-jstiehl:
