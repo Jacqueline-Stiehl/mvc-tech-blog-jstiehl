@@ -1,5 +1,3 @@
-//I made this one based on login.js
-
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
@@ -7,7 +5,6 @@ const signupFormHandler = async (event) => {
   const password = document.querySelector("#password-signup").value.trim();
 
   if (username && password) {
-    //send a POST request to the API endpoint
     const response = await fetch("/api/users/signup", {
       method: "POST",
       body: JSON.stringify({ username, password }),
@@ -15,7 +12,6 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      //document.location.replace("/profile");
       document.location.replace("/");
     } else {
       alert(response.statusText);

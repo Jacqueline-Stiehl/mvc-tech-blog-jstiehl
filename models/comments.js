@@ -1,12 +1,3 @@
-//need a model to store comment in database
-//use model in commentRoute; get by id and post comments (post id and userid);
-//fetch post and corresponding comments
-//comment belongs to post and user
-//Post can have many comments
-//comment belongs to one user
-//user can have many comments
-//comment can belong to one post
-
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 

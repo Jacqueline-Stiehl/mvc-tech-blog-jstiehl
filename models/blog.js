@@ -1,5 +1,3 @@
-//from MVC mini project
-//I modified on 8-11-23
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 

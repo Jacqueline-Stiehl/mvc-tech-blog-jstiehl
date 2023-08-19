@@ -22,7 +22,6 @@ const handleUpdateForm = async (event) => {
     },
   });
   if (response.ok) {
-    //alert("Update successful!!");
     document.location.replace("/profile");
   } else {
     alert("Unable to edit the blog entry.");

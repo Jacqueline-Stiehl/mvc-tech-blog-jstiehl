@@ -1,4 +1,3 @@
-//based off of MVC mini project
 const router = require("express").Router();
 const { Blog } = require("../../models");
 const withAuth = require("../../utils/auth");
